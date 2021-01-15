@@ -1,12 +1,9 @@
 def solution(arr1, arr2):
-    a1 = len(arr1)
-    a2 = len(arr2)
+    answer = [[0] * len(arr2[0]) for _ in range(len(arr1))] #배열 초기화
 
-    answer = [[0] * a2 for _ in range(a1)] #배열 초기화
-
-    for i in range(0, a1):
-        for j in range(0, a2):
-            for k in range(0, a2):
+    for i in range(0, len(arr1)):
+        for j in range(0, len(arr2[0])):
+            for k in range(0, len(arr1[0])):
                 answer[i][j] += arr1[i][k] * arr2[k][j]
 
     return answer
