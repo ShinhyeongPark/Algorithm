@@ -1,57 +1,31 @@
-import re
-
 def solution(str1, str2):
     stack1 = []
     stack2 = []
     int_ans = []
     uni_ans = []
-    str1 = str1.lower()
-    str2 = str2.lower()
-    p = re.compile('[a-z]+')
-    # str1 = p.findall(str1.upper())
-    # str2 = p.findall(str2.upper())
-    # test = []
-    for i in range(len(str1)-1):
-        stack1.append(str1[i]+str1[i+1])
+    
+    for s1, slice_s1 in zip(str1, str1[1:]):# str1 문자만 2글자씩 뽑기
+        join_str = "".join([s1,slice_s1])
+        if join_str.isalpha():
+            stack1.append( join_str.lower())
+	
+    for s2, slice_s2 in zip(str2, str2[1:]):# str2 문자만 2글자씩 뽑기
+        join_str = "".join([s2,slice_s2])
+        if join_str.isalpha():
+            stack2.append(join_str.lower())
 
-    for j in range(len(str2)-1):
-        stack2.append(str2[j]+str2[j+1])
+    if len(stack1) > len(stack2):
+        int_ans = [stack1.remove(x) for x in stack2 if x in stack1]
+    else:
+        int_ans = [stack2.remove(x) for x in stack1 if x in stack2]
 
-    for o in stack1:
-        # if p.match(o) is None:
-        #     stack1.remove(o)
-        # elif len(''.join(p.findall(o))) != 2:
-        #     stack1.remove(o)
-        # else:
-        #     if o != ''.join(p.findall(o)):
-        #         stack1.remove(o)
-        # # print(len(''.join(p.findall(o))))
-        #test.append(''.join(p.findall(o)))
-        # if o != ''.join(p.findall(o)):
-        #     stack1.remove(o)
-        #     print(stack1)
-        # if len(''.join(p.findall(o))) == 0:
-        #     stack1.remove(o)
-        #     print(stack1)
-    #print(stack1)
-    #교집합
-    for v in stack1:
-        if v in stack2:
-            int_ans.append(v)
-            stack2.remove(v)
 
     #합집합
-    uni_ans = stack1
-    for k in stack2:
-        if k in uni_ans:
-            continue
-        else:
-            uni_ans.append(k)
+    uni_ans = stack1 + stack2
+    uni = len(uni_ans)
     
-    return int(len(int_ans)/len(uni_ans)*65536)
+    if uni == 0 :
+        return 65536
+        
+    return int(len(int_ans)/uni*65536)
 
-def main():
-    print(solution("aa1+aa2", "AAAA12"))
-
-
-main()
