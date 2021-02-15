@@ -10,9 +10,12 @@
   2. Level 2
   3. Level 3
   
-## Baekjoon
+## SWEA
+> D1~D8
 
-
-''''
-Language: Python
-''''
+## Language
+```
+1순위: Python
+2순위: Java
+3순위: C++
+```
