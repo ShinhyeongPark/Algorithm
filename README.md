@@ -5,12 +5,12 @@
 > 자료구조를 **직접** 코드로 작성해 볼 것.   
 > 어떻게 코드를 **효율적**으로 짤 수 있을지 고민해볼 것.  
 
-## Programmers
+## Programmers (JAVA + Python)
   1. Level 1
   2. Level 2
   3. Level 3
   
-## SWEA
+## SWEA(JAVA)
 > D1~D8
 
 ## Language
