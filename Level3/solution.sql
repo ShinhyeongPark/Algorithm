@@ -1,0 +1,13 @@
+WITH RECURSIVE time AS(
+    SELECT 0 AS hour
+    UNION ALL
+    SELECT hour+1 FROM time WHERE hour <23
+)
+SELECT hour, COUNT(ANIMAL_ID) as COUNT
+FROM TIME
+LEFT OUTER JOIN ANIMAL_OUTS 
+on (hour = date_format(DATETIME, '%H'))
+GROUP BY hour
+ORDER BY HOUR
+
+-- WITH RECURSIVE 테이블 : 가상의 테이블 생성
