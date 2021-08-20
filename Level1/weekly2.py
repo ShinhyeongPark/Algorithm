@@ -18,47 +18,31 @@ def solution(scores):
     num = len(scores)
 
     for j in range(num):
-        totalScore = 0
-        myScore = scores[j][j]
-        minScore = min(scores[j])
-        maxScore = max(scores[j])
-        minCount = 0
-        maxCount = 0
-        # 비교
+        studentScores = []
+
         for i in range(num):
-            totalScore += scores[i][j]
+            score = scores[i][j]
+            studentScores.append(score)
 
-            if scores[i][j] == maxScore:
-                maxCount += 1
-            elif scores[i][j] == minScore:
-                minCount += 1
-            # if scores[i][j] < minScore:
-            #     minScore = scores[i][j]
-            # elif scores[i][j] > maxScore:
-            #     maxScore = scores[i][j]
+        # totalScore = 0
+        # myScore = scores[j][j]
+        minScore = min(studentScores)
+        maxScore = max(studentScores)
+        minCount = studentScores.count(minScore)
+        maxCount = studentScores.count(maxScore)
 
-        # print('#' + str(j), str(minScore), str(maxScore), str(myScore))
-        if minScore == myScore:
-            if minCount > 1:
-                answer += grade(totalScore, num)
-            else:
-                totalScore -= myScore
-                answer += grade(totalScore, num-1)
-        elif maxScore == myScore:
-            if maxCount > 1:
-                answer += grade(totalScore, num)
-            else:
-                totalScore -= myScore
-                answer += grade(totalScore, num-1)
-        else:
-            answer += grade(totalScore, num)
+        selfScore = studentScores[j]
+        totalScore = sum(studentScores)
+        studentNum = len(studentScores)
+
+        if maxScore == selfScore and maxCount == 1:
+            totalScore -= selfScore
+            studentNum -= 1
+        elif minScore == selfScore and minCount == 1:
+            totalScore -= selfScore
+            studentNum -= 1
+
+        # print(totalScore, studentNum)
+        answer += grade(totalScore, studentNum)
 
     return answer
-
-
-def main():
-    print(solution([[100, 90, 98, 88, 65], [50, 45, 99, 85, 77], [
-          47, 88, 95, 80, 67], [61, 57, 100, 80, 65], [24, 90, 94, 75, 65]]	))
-
-
-main()
