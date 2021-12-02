@@ -23,7 +23,7 @@
 </p>
 
 
-## 💡 Python과 JAVA를 사용하여 자료구조를 공부하고 알고리즘을 풀고 있습니다.
+## 💡 Python과 JAVA를 사용한 자료구조 학습 및 알고리즘 풀이
 <br/>
 
 ## 👉 Alogritom Site
