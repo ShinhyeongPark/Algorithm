@@ -1,4 +1,4 @@
-def solution(n, left, right):
+def solution1(n, left, right):
     answer = []
 
     arr = [[0 for _ in range(n)]for _ in range(n)]
@@ -12,3 +12,10 @@ def solution(n, left, right):
 
     sumArr = sum(arr, [])
     return sumArr[left:right+1]
+
+
+def solution2(n, left, right):
+    answer = []
+    for i in range(left,right+1):
+        answer.append(max(i//n,i%n)+1)
+    return answer
